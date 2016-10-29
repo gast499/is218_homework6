@@ -108,6 +108,25 @@ echo "<br>System time: ".
     ($data['ru_stime.tv_sec'] +
     $data['ru_stime.tv_usec'] / 1000000);
 
+//trick5
+echo '<h3>5:  Using Magic Constants: </h3>';
+echo 'PHP has certain magic constants that make coding easier.  These constants are: <br>';
+echo '__LINE__:  fetches the current line number<br>';
+echo '__FILE__:  fetches the file path<br>';
+echo '__DIR__:  fetches the directory path<br>';
+echo '__FUNCTION__: fetches the function name<br>';
+echo '__CLASS__:  fetches the class name<br>';
+echo '__METHOD__:  fetches the method name<br>';
+echo '__NAMESPACE__:  fetches the namespace<br><br>';
+echo 'The following example makes use of the __LINE__ magic constant:<br>';
+my_debug("some debug message", __LINE__);
+
+echo '<br>';
+my_debug("another debug message", __LINE__);
+ 
+function my_debug($msg, $line) {
+    echo "Line $line: $msg\n";
+}
 ?>
 </body>
 </html>

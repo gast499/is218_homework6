@@ -91,6 +91,23 @@ echo '<br>This final memory usage value is now ' . memory_get_usage() . ' bytes.
 echo '<br>The memory_get_peak_usage() method tells you the most memory your program has used.<br>';
 echo 'The peak memory usage for our program is ' . memory_get_peak_usage() . ' bytes.';
 
+//trick4
+echo '<h3>4:  Using getrusage() to determine CPU usage information:</h3>';
+echo 'This program will keep calling a function (microtime) for roughly 3 seconds.<br>';
+$start = microtime(true);
+// keep calling microtime for about 3 seconds
+while(microtime(true) - $start < 3) {
+ 
+}
+ 
+$data = getrusage();
+echo "User time: ".
+    ($data['ru_utime.tv_sec'] +
+    $data['ru_utime.tv_usec'] / 1000000);
+echo "<br>System time: ".
+    ($data['ru_stime.tv_sec'] +
+    $data['ru_stime.tv_usec'] / 1000000);
+
 ?>
 </body>
 </html>

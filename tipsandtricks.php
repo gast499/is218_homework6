@@ -5,7 +5,7 @@
 <body>
 <?php
 //trick1
-echo '<h3>Functions with Arbitrary Numbers of Arguments:</h3><br>Normal function with 2 optional arguments:<br>';
+echo '<h3>1:  Functions with Arbitrary Numbers of Arguments:</h3><br>Normal function with 2 optional arguments:<br>';
 // function with 2 optional arguments
 function foo($arg1 = '', $arg2 = '') {
  
@@ -60,7 +60,7 @@ arg3: again
 */
 
 //trick2
-echo '<h3>Using GLOB to find files:</h3><br>';
+echo '<h3>2:  Using GLOB to find files:</h3><br>';
 // get all php files
 echo 'The GLOB function allows you to find files.  For example, by passing the argument, (*.php), the function returns an array of all the php files in the directory.<br>';
 $files = glob('*.php');
@@ -72,6 +72,25 @@ Array
     [0] => tipsandtricks.php
 )
 */
+
+//trick3
+echo '<h3>3:  Using memory_get_usage() to find out how much memory my program is using:</h3>';
+echo "Initially, my program uses ".memory_get_usage()." bytes." . '<br>';
+echo 'Now, I am going to use up some more memory by creating an array with 100000 values.<br>';
+ 
+// let's use up some memory
+for ($i = 0; $i < 100000; $i++) {
+    $array []= md5($i);
+}
+echo 'The new memory usage value is: ' . memory_get_usage(). ' bytes.<br>  Now, I will remove half of the array.';
+// let's remove half of the array
+for ($i = 0; $i < 100000; $i++) {
+    unset($array[$i]);
+}
+echo '<br>This final memory usage value is now ' . memory_get_usage() . ' bytes.<br>';
+echo '<br>The memory_get_peak_usage() method tells you the most memory your program has used.<br>';
+echo 'The peak memory usage for our program is ' . memory_get_peak_usage() . ' bytes.';
+
 ?>
 </body>
 </html>

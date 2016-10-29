@@ -58,6 +58,20 @@ arg1: hello
 arg2: world
 arg3: again
 */
+
+//trick2
+echo '<h3>Using GLOB to find files:</h3><br>';
+// get all php files
+echo 'The GLOB function allows you to find files.  For example, by passing the argument, (*.php), the function returns an array of all the php files in the directory.<br>';
+$files = glob('*.php');
+ 
+print_r($files);
+/* output looks like:
+Array
+(
+    [0] => tipsandtricks.php
+)
+*/
 ?>
 </body>
 </html>

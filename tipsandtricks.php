@@ -135,6 +135,44 @@ echo 'However, you can also pass parameters such as a prefix, or a true value to
 echo 'Using a prefix (uniqid(foo_)): ' . uniqid('foo_');
 echo '<br>Using true to allow more entropy (uniqid(,true)): ' . uniqid('', true);
 echo '<br>Using both(uniqid(foo_, true)): ' . uniqid('foo_', true);
+
+//trick7
+echo '<h3>7:  Using Serialization:</h3>';
+echo 'The array to be serialized: <br>';
+$myvar = array(
+    'hello',
+    42,
+    array(1,'two'),
+    'apple'
+);
+print_r($myvar);
+ 
+// convert to a string
+$string = serialize($myvar);
+echo '<br>The serialize function converts the array into a formatted string: <br>'. "$string";
+/* prints
+a:4:{i:0;s:5:"hello";i:1;i:42;i:2;a:2:{i:0;i:1;i:1;s:3:"two";}i:3;s:5:"apple";}
+*/
+ 
+// you can reproduce the original variable
+echo '<br>The unserialize function reverts the formatted string back into the original array: <br>';
+$newvar = unserialize($string);
+ 
+print_r($newvar);
+/* prints
+Array
+(
+    [0] => hello
+    [1] => 42
+    [2] => Array
+        (
+            [0] => 1
+            [1] => two
+        )
+ 
+    [3] => apple
+)
+*/
 ?>
 </body>
 </html>

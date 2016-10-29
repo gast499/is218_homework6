@@ -127,6 +127,14 @@ my_debug("another debug message", __LINE__);
 function my_debug($msg, $line) {
     echo "Line $line: $msg\n";
 }
+
+//trick6
+echo '<h3>6:  Using uniqid() to generate a unique string:</h3>';
+echo 'This is an example of a unique string using the uniqid() method: ' . uniqid() . '<br>';
+echo 'However, you can also pass parameters such as a prefix, or a true value to lower the chance of a duplicate string.<br>';
+echo 'Using a prefix (uniqid(foo_)): ' . uniqid('foo_');
+echo '<br>Using true to allow more entropy (uniqid(,true)): ' . uniqid('', true);
+echo '<br>Using both(uniqid(foo_, true)): ' . uniqid('foo_', true);
 ?>
 </body>
 </html>

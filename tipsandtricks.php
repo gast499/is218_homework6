@@ -211,7 +211,21 @@ echo '<br>The gzuncompress function uncompresses compressed strings.';
 // getting it back
 $original = gzuncompress($compressed);
 
+//trick9
+echo '<h3>9:  Using the Register Shutdown Function:</h3>';
+echo 'The register_shutdown_function() function allows you to run some code before your program exits.  This code will run regardless of any errors that might otherwise prevent it from doing so.';
+echo '<br>The following is an example of the register_shutdown_function() in use:<br>';
+$start_time = microtime(true);
+ 
+register_shutdown_function('my_shutdown');
 
+function my_shutdown() {
+    global $start_time;
+ 
+    echo "execution took: ".
+            (microtime(true) - $start_time).
+            " seconds.";
+}
 ?>
 </body>
 </html>
